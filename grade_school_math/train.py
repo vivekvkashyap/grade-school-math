@@ -18,7 +18,7 @@ def main():
     model.to(device)
     model.train()
 
-    train_loader = DataLoader(train_dset, batch_size=8, shuffle=True)
+    train_loader = DataLoader(train_dset, batch_size=4, shuffle=True)
     optim = AdamW(model.parameters(), lr=1e-5)
 
     num_epochs = 10
