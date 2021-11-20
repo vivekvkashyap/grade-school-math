@@ -6,8 +6,9 @@ from transformers import get_scheduler
 from tqdm.auto import tqdm
 from torch.utils.data import DataLoader
 
-t_loss=[]
+
 def main():
+    t_loss=[]
     tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
     train_examples = get_examples("train")
     train_dset = GSMDataset(tokenizer, train_examples)
