@@ -6,7 +6,7 @@ from transformers import get_scheduler
 from tqdm.auto import tqdm
 from torch.utils.data import DataLoader
 
-loss=[]
+t_loss=[]
 def main():
     tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
     train_examples = get_examples("train")
@@ -21,7 +21,7 @@ def main():
     train_loader = DataLoader(train_dset, batch_size=8, shuffle=True)
     optim = AdamW(model.parameters(), lr=1e-5)
 
-    num_epochs = 1
+    num_epochs = 10
     num_training_steps = num_epochs * len(train_loader)
     lr_scheduler = get_scheduler(
         "linear",
@@ -42,9 +42,10 @@ def main():
             lr_scheduler.step()
             pbar.update(1)
             pbar.set_description(f"train_loss: {loss.item():.5f}")
-            loss.append(loss.item())
-
+            t_loss.append(loss.item())
+        losss=pd.DataFrame({'train_loss':t_loss})
+        losss.to_csv(f'./epoch{epoch}_loss.csv')
+        t_loss=[]
     model.save_pretrained("model_ckpts/")
-print(loss)
 if __name__ == "__main__":
     main()
