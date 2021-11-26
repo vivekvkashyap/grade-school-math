@@ -50,6 +50,6 @@ def main():
         t_loss=[]
         if epoch==5:
             model.save_pretrained(f'model_ckpts_{epoch}/')
-    model.save_pretrained("model_ckpts/")
+    model.save_pretrained("model_ckpts_{epoch}/")
 if __name__ == "__main__":
     main()
