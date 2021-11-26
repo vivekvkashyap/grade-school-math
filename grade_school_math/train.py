@@ -16,7 +16,7 @@ def main():
 
     device = th.device("cuda")
     config = GPT2Config.from_pretrained("gpt2")
-    model = GPT2LMHeadModel.from_pretrained("./drive/MyDrive/dataset/model_ckpt_5", config=config)
+    model = GPT2LMHeadModel.from_pretrained("../../../content/drive/MyDrive/dataset/model_ckpt_5", config=config)
     model.to(device)
     model.train()
 
