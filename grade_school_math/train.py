@@ -48,7 +48,8 @@ def main():
         losss=pd.DataFrame({'train_loss':t_loss})
         losss.to_csv(f'./epoch{epoch}_loss.csv')
         t_loss=[]
-        model.save_pretrained(f'model_ckpts_{epoch}/')
-    #model.save_pretrained("model_ckpts/")
+        if epoch==5:
+            model.save_pretrained(f'model_ckpts_{epoch}/')
+    model.save_pretrained("model_ckpts/")
 if __name__ == "__main__":
     main()
