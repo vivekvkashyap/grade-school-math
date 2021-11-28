@@ -12,9 +12,10 @@ def main():
     print("Model Loaded")
 
     test_examples = get_examples("test")
-    qn = test_examples[1]["question"]
+    qn = test_examples[2]["question"]
     sample_len = 100
     print(qn.strip())
+    print('above is the question')
     print(sample(model, qn, tokenizer, device, sample_len))
 
 
